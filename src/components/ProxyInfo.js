@@ -1,6 +1,5 @@
 import React from 'react';
-// import contract from 'truffle-contract';
-// import artifactor from 'truffle-artifactor';
+import BigNumber from 'big-number';
 import { Form, Panel, FormGroup, ControlLabel, Col, Button } from 'react-bootstrap';
 
 let contract = require('truffle-contract');
@@ -12,83 +11,54 @@ let UserProxy = contract(json2);
 
 class ProxyInfo extends React.Component {
   
-  state = {
-    address: '',
-    allowance: Number,
+  constructor(props) {
+    super(props)
+    this.state = {
+      address: '',
+      allowance: null,
+    };
+
+    this.deployFactory = this.deployFactory.bind(this);
+    this.deployUserProxy = this.deployUserProxy.bind(this);
   }
 
-  
-  // setContract = ( contract, provider) => {
-  //   contract.setProvider(provider.currentProvider);
-  // }
+  setContract = (contract, provider) => {
+    contract.setProvider(provider.currentProvider);
+  }
 
-  // deployContract = (contract) => {
+  deployFactory = () => {
+    let metamask = this.props.metamaskAddress;
+    let bound = this; // Need to pass the "this" keyword into a variable to be able to access it inside promise scope
 
-  //   if(contract === Factory){
-  //     contract.at("0x56654cDeD18aB263751ee9403A6CA38d6FAe0edC").then(function (instance) {
-  //       return instance.orderbook().then(function (addr) {
-  //         this.setState({
-  //           address: addr,
-  //         });
-  //       });
-  //     });
-      
-  //   } else {
-  //     contract.at(this.state.address).then(function (instance) {
-  //       return instance.allowance().then(function (res) {
-  //         this.setState({
-  //           allowance: res,
-  //         });
-  //       });
-  //     });
-  //   }
-  //  }
+      Factory.deployed().then(function (instance) {
+        return instance.tradersProxy.call(metamask).then(function (addr) {
+          
+          bound.setState({
+            address: addr.toString(),
+          });
+        });
+      });  
+   }
+
+   deployUserProxy = () => {
+     let proxyAddress = this.state.address;
+     let bound = this;
+     UserProxy.at("0x119d45380e2ccd4fddb44c36a51029d307476b8f").then(function (instance) {
+       console.log(instance)
+       return instance.allowance.call().then(function (res) {
+         bound.setState({
+           allowance: res.plus(21).toString(10),
+         });
+       });
+     });
+   }
 
   componentDidMount = () => {
-    // console.log(typeof(Factory), Factory)
-    // console.log(window.web3.currentProvider);
-    // this.setContract(Factory, this.props.provider);
-    // this.deployContract(Factory);
-    // this.setContract(UserProxy, this.props.provider);
-    // this.deployContract(UserProxy);$
-    console.log(Factory);
-    Factory.setProvider(this.props.provider.currentProvider);
-    console.log(Factory);
-    let Metamask = this.props.metamaskAddress;
-    console.log(typeof(proxyAddress))
-
-    Factory.at("0x56654cDeD18aB263751ee9403A6CA38d6FAe0edC").then(function (instance) {
-      console.log(instance);
-      return instance.tradersProxy.call(Metamask).then(function (addr) {
-        this.setState({
-          address: addr.toString(),
-        });
-       }); 
-    });
-    // let proxyAddress = this.state.address;
-    // console.log(proxyAddress)
-    UserProxy.at(this.state.address).then(function (instance) {
-      return instance.allowance().then(function (res) {
-        this.setState({
-          allowance: res,
-        });
-      });
-    });
+    this.setContract(Factory, this.props.provider);
+    this.deployFactory();
+    this.setContract(UserProxy, this.props.provider);
+    this.deployUserProxy();
   }
-  
-
-  // componentDidMount = () => {
-  //   artifactor.save(myContract, "../contracts/ProxiesFactory.sol.js").then(function() {
-  //     let Factory = contract("../contracts/ProxiesFactory.sol.js");
-  //     console.log(Factory)
-  //     Factory.setProvider(this.props.provider.currentProvider);
-  //     Factory.at("0x56654cDeD18aB263751ee9403A6CA38d6FAe0edC").then(function (instance) {
-  //       return instance.orderbook().then(function (addr) {
-  //         console.log(addr)
-  //       })
-  //     })
-  //   })
-  // }
 
   render () {
     return (
@@ -108,11 +78,11 @@ class ProxyInfo extends React.Component {
                 <ControlLabel>VCT balance: {/* Proxy balance */}</ControlLabel>
               </Col>
             </FormGroup>
-            {/* <FormGroup controlId="formHorizontaladdress">
+            <FormGroup controlId="formHorizontaladdress">
               <Col componentClass={ControlLabel} sm={2}>
                 <ControlLabel><Button className="ownerButton">Change Owner</Button></ControlLabel>
               </Col>
-            </FormGroup> */}
+            </FormGroup>
           </Form>
         </Panel.Body>
       </Panel>

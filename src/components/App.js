@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import TxForm from './TxForm';
-// import ProxyInfo from './ProxyInfo';
+import ProxyInfo from './ProxyInfo';
 
 class App extends React.Component {
 	constructor(props) {
@@ -31,7 +31,7 @@ class App extends React.Component {
 		return (
 			<div>
 				<Header provider={this.state.provider} />
-				{/* <ProxyInfo provider={this.state.provider} metamaskAddress={this.state.metamaskAddress} /> */}
+				<ProxyInfo provider={this.state.provider} metamaskAddress={this.state.metamaskAddress} />
 				<TxForm/>
 				{/* <img className="kitty" alt="Variabl" src="https://variabl.io/assets/images/logo.svg" /> */}
 			</div>
