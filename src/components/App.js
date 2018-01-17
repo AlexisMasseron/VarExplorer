@@ -33,7 +33,7 @@ class App extends React.Component {
 				<Header provider={this.state.provider} />
 				<ProxyInfo provider={this.state.provider} metamaskAddress={this.state.metamaskAddress} />
 				<TxForm/>
-				{/* <img className="kitty" alt="Variabl" src="https://variabl.io/assets/images/logo.svg" /> */}
+				<img className="kitty" alt="Variabl" src="https://variabl.io/assets/images/logo.svg" />
 			</div>
 		)
 	}

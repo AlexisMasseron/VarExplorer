@@ -7,13 +7,13 @@ class Header extends React.Component {
     return (
         <Navbar>
           <Navbar.Header>
-            <Navbar.Brand>
-              <a href="/">VarExplorer</a>
+            <Navbar.Brand >
+            <a href="/">VarExplorer</a>
             </Navbar.Brand>
           </Navbar.Header>
           <Nav pullRight>
             <NavItem>
-              Your address: {this.props.provider.eth.accounts[0]}
+              Your metamask address: {this.props.provider.eth.accounts[0]}
             </NavItem>
           </Nav>
         </Navbar>
