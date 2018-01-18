@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Panel, FormGroup, ControlLabel, Col, Button } from 'react-bootstrap';
+import OwnershipModule from './OwnershipModule';
 
 let contract = require('truffle-contract');
 let factoryJson = require("../contracts/ProxiesFactory.json");
@@ -92,24 +93,23 @@ class ProxyInfo extends React.Component {
     return (
       <Panel>
         <Panel.Heading>
-          <Panel.Title componentClass="h3">Variable account {this.state.address} Info </Panel.Title>
+          <Panel.Title componentClass="h3"><p>Variable account {this.state.address} Info </p></Panel.Title>
         </Panel.Heading>
         <Panel.Body>
-          <Form horizontal>
-            <FormGroup controlId="formHorizontallowance">
-              <Col componentClass={ControlLabel} sm={2}>
-                <ControlLabel>Allowance: {this.state.allowance} ETH</ControlLabel>
-              </Col>
-              <Col componentClass={ControlLabel} sm={8}>
-                <ControlLabel><Button className="ownerButton" /*onClick={this.handleClick}*/>Change Owner</Button></ControlLabel>
-              </Col>
+          <Form >
+            <Col componentClass={ControlLabel} sm={6}>
+            <FormGroup>
+                <ControlLabel><p>Allowance:</p> {this.state.allowance} ETH</ControlLabel>
             </FormGroup>
-            <FormGroup controlId="formHorizontalBallance">
-              <Col componentClass={ControlLabel} sm={2}>
-                <ControlLabel>VCT balance: {this.state.vctBallance} VCT</ControlLabel>
-              </Col>
+            <FormGroup>
+              <ControlLabel><p>VCT balance:</p> {this.state.vctBallance} VCT</ControlLabel>
             </FormGroup>
-          </Form>
+            </Col>
+            <Col className="rightInfo" componentClass={ControlLabel} sm={6}>
+              <OwnershipModule/>
+            </Col>
+         </Form> 
+            
         </Panel.Body>
       </Panel>
     )

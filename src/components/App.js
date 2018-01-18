@@ -26,7 +26,6 @@ class App extends React.Component {
 		);
 	}
 
-	// myContractAddress = { this.state.myContractAddress }
 	render() {
 		return (
 			<div>

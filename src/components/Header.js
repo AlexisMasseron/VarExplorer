@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, NavItem, } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 class Header extends React.Component { 
 
@@ -8,14 +8,17 @@ class Header extends React.Component {
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand >
-            <a href="/">VarExplorer</a>
+              <a href="/"><p className="VariablTitle">VariablExplorer</p></a>
             </Navbar.Brand>
+          <Navbar.Toggle />
           </Navbar.Header>
-          <Nav pullRight>
-            <NavItem>
-              Your metamask address: {this.props.provider.eth.accounts[0]}
-            </NavItem>
-          </Nav>
+          <Navbar.Collapse>
+            <Nav pullRight>
+              <NavItem>
+                <p>Your metamask address: {this.props.provider.eth.accounts[0]}</p>
+              </NavItem>
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
     )
   }

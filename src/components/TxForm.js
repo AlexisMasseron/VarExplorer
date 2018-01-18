@@ -28,7 +28,7 @@ class TxForm extends React.Component {
 		return (
 			<Panel >
 					<Panel.Heading>
-						<Panel.Title componentClass="h3">Send Tokens</Panel.Title>
+					<Panel.Title componentClass="h3"><p>Send Tokens</p></Panel.Title>
 						</Panel.Heading>
 						<Panel.Body>
 							<Form horizontal>

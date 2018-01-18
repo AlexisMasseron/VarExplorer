@@ -3,10 +3,31 @@ progress,sub,sup{vertical-align:baseline}button,hr,input{overflow:visible}[type=
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 h1, h2, h3, h4, h5, h6 {
 	font-weight: lighter;
+	font-family: 'Roboto'
+}
+p {
+	font-family: 'Roboto';
 }
 
-connexionAlert {
+/* .VariablTitle{
+	font-size: 30px;
+} */
+.rightInfo {
+ 	display: block;
+  border-left: 1px dotted #CCC;
+  box-sizing: border-box;
+  padding: 0px 15px 0px 0px;
+}
+
+/* .connexionAlert {
 		margin-top: 50px;
+} */
+
+FormGroup{
+	font-family: 'Roboto';
+}
+.accountInfo {
+	display: inline-block;
 }
 img.kitty {
 	display: block;
@@ -35,12 +56,13 @@ img.kitty {
 .buttonTX{
 	background: linear-gradient(45deg, #0CAA94 0%, #13c9b0 100%);
 	color: white;
+	font-family: 'Roboto';
 }
 
 .ownerButton{
-	background: white;
-	color: black;
-	margin-right: -50px;
+	background: linear-gradient(45deg, #0CAA94 0%, #13c9b0 100%);
+	color: white;
+	font-family: 'Roboto';
 }
 
 .headerConnexion {
