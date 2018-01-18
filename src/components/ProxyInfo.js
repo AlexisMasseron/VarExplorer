@@ -17,6 +17,7 @@ class ProxyInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      name: '',
       address: '',
       allowance: null,
       vctBallance: null,
@@ -55,7 +56,14 @@ class ProxyInfo extends React.Component {
         bound.deployUserProxy(); // Need to be called after here to prevent async error such as empty adress in state
         bound.deployVCToken();
       });
-    });  
+    });
+    Factory.deployed().then(function (instance) {
+      return instance.getNickname(metamask).then(function (nick) {
+        bound.setState({
+          name: nick.toString(),
+        });
+      });
+    }); 
   }
 
   deployUserProxy = () => {
@@ -93,7 +101,7 @@ class ProxyInfo extends React.Component {
     return (
       <Panel>
         <Panel.Heading>
-          <Panel.Title componentClass="h3"><p>Variable account {this.state.address} Info </p></Panel.Title>
+          <Panel.Title componentClass="h3"><p>Welcome {this.state.name} to your Variable account {this.state.address} </p></Panel.Title>
         </Panel.Heading>
         <Panel.Body>
           <Form >
