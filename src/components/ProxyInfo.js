@@ -1,6 +1,7 @@
 import React from 'react';
-import { Form, Panel, FormGroup, ControlLabel, Col, Button } from 'react-bootstrap';
+import { Form, Panel, FormGroup, ControlLabel, Col } from 'react-bootstrap';
 import OwnershipModule from './OwnershipModule';
+import TxForm from './TxForm';
 
 let contract = require('truffle-contract');
 let factoryJson = require("../contracts/ProxiesFactory.json");
@@ -17,22 +18,23 @@ class ProxyInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
-      address: '',
+      name: '',  // Account name
+      address: '', // Account address
       allowance: null,
       vctBallance: null,
     };
 
     this.deployFactory = this.deployFactory.bind(this);
     this.deployUserProxy = this.deployUserProxy.bind(this);
+    this.deployVCToken = this.deployVCToken.bind(this);
   }
 
   setContract = (contract, provider) => {
     contract.setProvider(provider.currentProvider);
   }
 
-  toEth = (wei) => {   // Used to convert Wei to ETH because web3.utils.FromWei() is available only from web3@0.1.X
-    let eth = (wei / Math.pow(10, 18)).toFixed(3);
+  toEth = (wei) => {   // Used to convert Wei to ETH because web3.utils.FromWei() is available only from web3@0.1.X and we are @0.0.7
+    let eth = (wei / Math.pow(10, 18)).toFixed(4);
     return eth;
   }
 
@@ -41,14 +43,18 @@ class ProxyInfo extends React.Component {
     let bound = this; // Need to pass the "this" keyword into a variable to be able to access it inside promise scope
     Factory.deployed().then(function (instance) {
       return instance.tradersProxy.call(metamask).then(function (addr) {
-        bound.setState({
-          address: addr.toString(),
-        });
-        bound.deployUserProxy(); // Need to be called after here to prevent async error such as empty adress in state
-        bound.deployVCToken();
+        if (addr === "0x0000000000000000000000000000000000000000"){
+          window.alert("Please use a registered and valid metamask address")
+        } else {
+          bound.setState({
+            address: addr.toString(),
+          }); 
+          bound.deployUserProxy(); // Need to be called after to prevent async error such as empty adress in state
+          bound.deployVCToken();
+        }
       });
     });
-    Factory.deployed().then(function (instance) {
+    Factory.deployed().then(function (instance) {     // TODO: link promises 
       return instance.getNickname(metamask).then(function (nick) {
         bound.setState({
           name: nick.toString(),
@@ -104,12 +110,12 @@ class ProxyInfo extends React.Component {
               <ControlLabel><p>VCT balance:</p> {this.state.vctBallance} VCT</ControlLabel>
             </FormGroup>
             </Col>
-            <Col className="rightInfo" componentClass={ControlLabel} sm={6}>
-              <OwnershipModule/>
+            <Col className="rightInfo:" componentClass={ControlLabel} sm={6}>
+              <OwnershipModule ownerAddress ={this.state.address}/> {/* OWNERSHIP COMPONENT*/}
             </Col>
          </Form> 
-            
         </Panel.Body>
+        <TxForm variablAddress={this.state.address} /> {/* TXFORM COMPONENT*/}
       </Panel>
     )
   }

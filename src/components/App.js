@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from './Header';
-import TxForm from './TxForm';
 import ProxyInfo from './ProxyInfo';
 
 class App extends React.Component {
@@ -13,7 +12,7 @@ class App extends React.Component {
 		};
 	}
 	
-	changeProvider = (newProvider) => {
+	updateProvider = (newProvider) => {
 		this.setState({
 			provider: newProvider,
 			metamaskAddress: newProvider.eth.accounts[0],
@@ -21,7 +20,7 @@ class App extends React.Component {
 	}
 
 	componentWillMount = () => {
-		this.changeProvider(
+		this.updateProvider(
 			window.web3
 		);
 	}
@@ -31,7 +30,6 @@ class App extends React.Component {
 			<div>
 				<Header provider={this.state.provider} />
 				<ProxyInfo provider={this.state.provider} metamaskAddress={this.state.metamaskAddress} />
-				<TxForm/>
 				<img className="kitty" alt="Variabl" src="https://variabl.io/assets/images/logo.svg" />
 			</div>
 		)

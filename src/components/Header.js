@@ -8,7 +8,7 @@ class Header extends React.Component {
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand >
-              <a href="/"><p className="VariablTitle">VariablExplorer</p></a>
+              <a href="/"> <p className="VariablTitle">VariablExplorer</p></a>
             </Navbar.Brand>
           <Navbar.Toggle />
           </Navbar.Header>
