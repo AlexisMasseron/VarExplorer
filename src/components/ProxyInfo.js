@@ -36,15 +36,6 @@ class ProxyInfo extends React.Component {
     return eth;
   }
 
-  // handleClick = () => {
-  //   let proxyAddress = this.state.address;
-  //   let bound = this;
-  //    Factory.deployed().then(function (instance) {
-  //      return instance.ChangedProxyOwner.call(proxyAddress, ).then(function (addr) {
-  //     });
-  //   });  
-  // }
-
   deployFactory = () => {
     let metamask = this.props.metamaskAddress; // Metamask address
     let bound = this; // Need to pass the "this" keyword into a variable to be able to access it inside promise scope

@@ -20,7 +20,7 @@ class Connexion extends React.Component {
         let web3;
         window.addEventListener('load', function() {
             if (typeof window.web3 !== 'undefined') {
-                console.warn("Browser injection detected");
+                console.log("Browser injection detected");
                 web3 = new Web3(window.web3.currentProvider);
                 this.setState({
                     account: web3.eth.accounts[0],
@@ -33,7 +33,7 @@ class Connexion extends React.Component {
                     this.context.router.transitionTo(`/acc/${this.state.account}`);
                 }                
             } else {
-                console.warn("Local injection detected");
+                console.log("Local injection detected");
                 web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
                 this.setState({
                     account: web3.eth.accounts[0],
