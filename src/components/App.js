@@ -1,6 +1,10 @@
 import React from 'react';
-import Header from './Header';
+
+//COMPONENTS
+import CustomHeader from './CustomHeader';
 import ProxyInfo from './ProxyInfo';
+// import CustomFooter from './CustomFooter';
+
 
 class App extends React.Component {
 	constructor(props) {
@@ -28,9 +32,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<Header provider={this.state.provider} />
+				<CustomHeader provider={this.state.provider} />
 				<ProxyInfo provider={this.state.provider} metamaskAddress={this.state.metamaskAddress} />
 				<img className="kitty" alt="Variabl" src="https://variabl.io/assets/images/logo.svg" />
+				{/* <CustomFooter/> */}
 			</div>
 		)
 	}

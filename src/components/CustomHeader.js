@@ -1,14 +1,14 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
-class Header extends React.Component { 
+class CustomHeader extends React.Component { 
 
   render () {
     return (
         <Navbar>
           <Navbar.Header>
-            <Navbar.Brand >
-              <a href="/"> <p className="VariablTitle">VariablExplorer</p></a>
+            <Navbar.Brand>
+            <a href="/"><img src="https://image.ibb.co/kVryjG/variabl_Home.png" alt="brandLogo"/>VariablExplorer</a>
             </Navbar.Brand>
           <Navbar.Toggle />
           </Navbar.Header>
@@ -24,4 +24,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default CustomHeader;

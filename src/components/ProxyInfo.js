@@ -110,7 +110,7 @@ class ProxyInfo extends React.Component {
               <ControlLabel><p>VCT balance:</p> {this.state.vctBallance} VCT</ControlLabel>
             </FormGroup>
             </Col>
-            <Col className="rightInfo:" componentClass={ControlLabel} sm={6}>
+            <Col className="rightInfo" componentClass={ControlLabel} sm={6}>
               <OwnershipModule ownerAddress ={this.state.address}/> {/* OWNERSHIP COMPONENT*/}
             </Col>
          </Form> 
