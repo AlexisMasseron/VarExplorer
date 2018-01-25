@@ -22,6 +22,7 @@ class TxForm extends React.Component {
 		let sender = this.props.variablAddress;
     let receiver = this.addressInput.value;
 		let amount = this.toWei(this.amountInput.value);
+
 		if (this.receiver.length !== 40) {
 			window.alert("Please enter a valid address")
 			return false; // keep form from submitting

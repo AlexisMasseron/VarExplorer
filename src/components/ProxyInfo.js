@@ -111,7 +111,7 @@ class ProxyInfo extends React.Component {
             </FormGroup>
             </Col>
             <Col className="rightInfo" componentClass={ControlLabel} sm={6}>
-              <OwnershipModule ownerAddress ={this.state.address}/> {/* OWNERSHIP COMPONENT*/}
+              <OwnershipModule ownerAddress={this.state.address}/> {/* OWNERSHIP COMPONENT*/}
             </Col>
          </Form> 
         </Panel.Body>

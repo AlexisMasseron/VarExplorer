@@ -34,7 +34,7 @@ class App extends React.Component {
 			<div>
 				<CustomHeader provider={this.state.provider} />
 				<ProxyInfo provider={this.state.provider} metamaskAddress={this.state.metamaskAddress} />
-				<img className="kitty" alt="Variabl" src="https://variabl.io/assets/images/logo.svg" />
+				<img className="mainLogo" alt="Variabl" src="https://variabl.io/assets/images/logo.svg" />
 				{/* <CustomFooter/> */}
 			</div>
 		)
