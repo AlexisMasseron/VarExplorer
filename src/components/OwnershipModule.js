@@ -7,7 +7,8 @@ let Factory = contract(factoryJson);
 
 class OwnershipModule extends React.Component  {
 
-  handleOwnership = () => {
+  handleOwnership = event => {
+    event.preventDefault();
     let newAddress = this.newOwnerAddress.value;
     let oldAddress = this.props.ownerAddress;
     let bound = this;
@@ -26,11 +27,15 @@ class OwnershipModule extends React.Component  {
           <FormControl className="formTX" type="text" placeholder="0x52706aa94C13AA7C4568E8E0d367a88AA2CAe103" ref={(input) => { this.newOwnerAddress = input }}/>
           <HelpBlock>If you want to change your contract address, please submit a valid address</HelpBlock>
         </FormGroup>
-        <FormGroup>
+        <FormGroup onSubmit={(e) => this.handleTx(e)}>
           <ControlLabel><Button className="ownerButton" type="submit">Change Owner</Button></ControlLabel>
         </FormGroup>
       </Col>
     )
   }
+
+  static propTypes = {
+		ownerAddress: React.PropTypes.string.isRequired,
+	};
 }
 export default OwnershipModule;

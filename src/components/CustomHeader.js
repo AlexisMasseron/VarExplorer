@@ -5,6 +5,7 @@ class CustomHeader extends React.Component {
 
   render () {
     return (
+      <div>
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
@@ -20,6 +21,7 @@ class CustomHeader extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+      </div>
     )
   }
 }

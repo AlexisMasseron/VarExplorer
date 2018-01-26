@@ -107,8 +107,7 @@ class Connexion extends React.Component {
     static contextTypes = {
         router: React.PropTypes.object
     };
-    
-};
+}
 
 export default Connexion;
 

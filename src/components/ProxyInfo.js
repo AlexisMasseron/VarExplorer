@@ -49,8 +49,8 @@ class ProxyInfo extends React.Component {
           bound.setState({
             address: addr.toString(),
           }); 
-          bound.deployUserProxy(); // Need to be called after to prevent async error such as empty adress in state
-          bound.deployVCToken();
+          // bound.deployUserProxy(); // Need to be called after to prevent async error such as empty adress in state
+          // bound.deployVCToken();
         }
       });
     });
@@ -89,9 +89,9 @@ class ProxyInfo extends React.Component {
 
   componentDidMount = () => {
     this.setContract(Factory, this.props.provider);
-    this.deployFactory();
     this.setContract(UserProxy, this.props.provider);
     this.setContract(VCToken, this.props.provider);
+    this.deployFactory();
   }
 
   render () {
@@ -111,14 +111,19 @@ class ProxyInfo extends React.Component {
             </FormGroup>
             </Col>
             <Col className="rightInfo" componentClass={ControlLabel} sm={6}>
-              <OwnershipModule ownerAddress={this.state.address}/> {/* OWNERSHIP COMPONENT*/}
+              {/* <OwnershipModule ownerAddress={this.state.address}/> OWNERSHIP COMPONENT */}
             </Col>
          </Form> 
         </Panel.Body>
-        <TxForm variablAddress={this.state.address} /> {/* TXFORM COMPONENT*/}
+        {/* <TxForm variablAddress={this.state.address} /> TXFORM COMPONENT */}
       </Panel>
     )
   }
+
+  static propTypes = {
+		provider: React.PropTypes.object.isRequired,
+		metamaskAddress: React.PropTypes.string.isRequired,
+	};
 }
 
 export default ProxyInfo;

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form, Button, Col, Panel, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
+import { Form, Button, Col, Panel, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
 
 class TxForm extends React.Component {
     constructor(props) {
@@ -47,40 +47,46 @@ class TxForm extends React.Component {
 
 	render() {
 		return (
-			<Panel >
-				<Panel.Heading>
-					<Panel.Title componentClass="h3"><p>Send Tokens</p></Panel.Title>
-				</Panel.Heading>
-				<Panel.Body>
-					<Form horizontal onSubmit={(e) => this.handleTx(e)}>
+			<div>
+				<Panel >
+					<Panel.Heading>
+						<Panel.Title componentClass="h3"><p>Send Tokens</p></Panel.Title>
+					</Panel.Heading>
+					<Panel.Body>
+						<Form horizontal onSubmit={(e) => this.handleTx(e)}>
 
-						<FormGroup controlId="formHorizontaladdress">
-							<Col componentClass={ControlLabel} sm={2}>
-								<ControlLabel>To Address</ControlLabel>
-							</Col>
-							<Col sm={10}>
-								<FormControl type="text" placeholder="0x52706aa94C13AA7C4568E8E0d367a88AA2CAe103" ref={(input) => { this.addressInput = input }} />
-							</Col>
-						</FormGroup>
+							<FormGroup controlId="formHorizontaladdress">
+								<Col componentClass={ControlLabel} sm={2}>
+									<ControlLabel>To Address</ControlLabel>
+								</Col>
+								<Col sm={10}>
+									<FormControl type="text" placeholder="0x52706aa94C13AA7C4568E8E0d367a88AA2CAe103" ref={(input) => { this.addressInput = input }} />
+								</Col>
+							</FormGroup>
 
-						<FormGroup controlId="formHorizontalamount">
-							<Col componentClass={ControlLabel} sm={2}>
-								<ControlLabel>Amount to send</ControlLabel>
-							</Col>
-							<Col sm={10}>
-								<FormControl type="Number" step="any" placeholder="Amount" ref={(input) => { this.amountInput = input }}/>
-								<ControlLabel className="txHashLabel"><p>Transaction hash: {this.state.txHash}</p></ControlLabel>
-							</Col>
-						</FormGroup>
+							<FormGroup controlId="formHorizontalamount">
+								<Col componentClass={ControlLabel} sm={2}>
+									<ControlLabel>Amount to send</ControlLabel>
+								</Col>
+								<Col sm={10}>
+									<FormControl type="Number" step="any" placeholder="Amount" ref={(input) => { this.amountInput = input }}/>
+									<ControlLabel className="txHashLabel"><p>Transaction hash: {this.state.txHash}</p></ControlLabel>
+								</Col>
+							</FormGroup>
 
-						<Button block className="buttonTX" type="submit">
-								Validate transaction
-						</Button>
-					</Form>
-				</Panel.Body>
-			</Panel>
+							<Button block className="buttonTX" type="submit">
+									Validate transaction
+							</Button>
+						</Form>
+					</Panel.Body>
+				</Panel>
+			</div>
 		);
 	}
+
+	static propTypes = {
+		variablAddress: React.PropTypes.string.isRequired,
+	};
 }
 
 export default TxForm;

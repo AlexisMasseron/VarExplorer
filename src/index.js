@@ -9,7 +9,7 @@ import { BrowserRouter, Match, Miss } from 'react-router'
 //CSS
 import './index.css'
 
-const Route = () => {
+const Root = () => {
   return (
     <BrowserRouter>
       <div>
@@ -22,6 +22,6 @@ const Route = () => {
 }
 
 render(
-  <Route />,
+  <Root />,
   document.getElementById('root')
 );
