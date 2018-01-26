@@ -24,9 +24,7 @@ class App extends React.Component {
 	}
 
 	componentWillMount = () => {
-		this.updateProvider(
-			window.web3
-		);
+		this.updateProvider(window.web3);
 	}
 
 	render() {
