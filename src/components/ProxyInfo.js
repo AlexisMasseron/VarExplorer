@@ -16,7 +16,8 @@ let VCToken = contract(vctokenJson);
 class ProxyInfo extends React.Component {
   
   constructor(props) {
-    super(props)
+    super(props);
+
     this.state = {
       name: '',  // Account name
       address: '', // Account address
@@ -49,8 +50,8 @@ class ProxyInfo extends React.Component {
           bound.setState({
             address: addr.toString(),
           }); 
-          // bound.deployUserProxy(); // Need to be called after to prevent async error such as empty adress in state
-          // bound.deployVCToken();
+          bound.deployUserProxy(); // Need to be called after to prevent async error such as empty adress in state
+          bound.deployVCToken();
         }
       });
     });

@@ -50,6 +50,7 @@ class Connexion extends React.Component {
         }.bind(this));
     }
     
+    // TODO: Create component to render the different types of alerts to avoid using multiple if/else
     render() {
         if(this.state.metaPopUpIsVisible){
             return (
