@@ -14,7 +14,7 @@ class OwnershipModule extends React.Component  {
     let bound = this;
     Factory.at(oldAddress).then(function (instance) {
       return instance.ChangedProxyOwner.call(bound.oldAddress, bound.newAddress ).then(function (addr) {
-        window.alert("Your address has been changed");
+        window.alert("Your address has been changed to: " + bound.newAddress);
       });
     });
   }
@@ -27,8 +27,8 @@ class OwnershipModule extends React.Component  {
           <FormControl className="formTX" type="text" placeholder="0x52706aa94C13AA7C4568E8E0d367a88AA2CAe103" ref={(input) => { this.newOwnerAddress = input }}/>
           <HelpBlock>If you want to change your contract address, please submit a valid address</HelpBlock>
         </FormGroup>
-        <FormGroup onSubmit={(e) => this.handleTx(e)}>
-          <ControlLabel><Button className="ownerButton" type="submit">Change Owner</Button></ControlLabel>
+        <FormGroup >
+          <ControlLabel><Button className="ownerButton" type="submit" onClick={(e) => this.handleTx(e)}>Change Owner</Button></ControlLabel>
         </FormGroup>
       </Col>
     )

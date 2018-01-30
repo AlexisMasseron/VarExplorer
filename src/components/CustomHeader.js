@@ -24,6 +24,9 @@ class CustomHeader extends React.Component {
       </div>
     )
   }
+  static propTypes = {
+    provider: React.PropTypes.object.isRequired,
+  };
 }
 
 export default CustomHeader;
