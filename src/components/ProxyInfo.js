@@ -99,16 +99,16 @@ class ProxyInfo extends React.Component {
     return (
       <Panel>
         <Panel.Heading>
-          <Panel.Title componentClass="h3"><p>Welcome {this.state.name} to your Variable account {this.state.address} </p></Panel.Title>
+          <Panel.Title className="panelTitle" componentClass="h3"><p><i className="fa fa-user-circle-o" aria-hidden="true"></i> Welcome {this.state.name} to your Variable account {this.state.address} </p></Panel.Title>
         </Panel.Heading>
         <Panel.Body>
           <Form >
             <Col componentClass={ControlLabel} sm={6}>
             <FormGroup>
-                <ControlLabel><p>Allowance:</p> {this.state.allowance} ETH</ControlLabel>
+                <ControlLabel><p>Allowance: {this.state.allowance} ETH</p></ControlLabel>
             </FormGroup>
             <FormGroup>
-              <ControlLabel><p>VCT balance:</p> {this.state.vctBallance} VCT</ControlLabel>
+                <ControlLabel><p>VCT balance: {this.state.vctBallance} VCT</p></ControlLabel>
             </FormGroup>
             </Col>
             <Col className="rightInfo" componentClass={ControlLabel} sm={6}>

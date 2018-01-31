@@ -23,9 +23,9 @@ class OwnershipModule extends React.Component  {
     return (
       <Col sm={10}>
         <FormGroup>
-          <ControlLabel>New Address</ControlLabel>
+          <ControlLabel><p>Change account address</p></ControlLabel>
           <FormControl className="formTX" type="text" placeholder="0x52706aa94C13AA7C4568E8E0d367a88AA2CAe103" ref={(input) => { this.newOwnerAddress = input }}/>
-          <HelpBlock>If you want to change your contract address, please submit a valid address</HelpBlock>
+          <HelpBlock><p>If you want to change your contract address, please submit a known and valid address</p></HelpBlock>
         </FormGroup>
         <FormGroup >
           <ControlLabel><Button className="ownerButton" type="submit" onClick={(e) => this.handleTx(e)}>Change Owner</Button></ControlLabel>
