@@ -7,7 +7,7 @@ import NotFound from './components/NotFound'
 //Router
 import { BrowserRouter, Match, Miss } from 'react-router'
 //CSS
-import './index.css'
+import './style.css'
 
 const Root = () => {
   return (

@@ -1,0 +1,365 @@
+$siaGreen: rgb(0, 201, 158);
+$appBg: #3D4C5F;
+
+.hide {
+  display: none;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: url('../public/assets/variablBody.jpeg');
+  background-size: cover;
+  font-family: 'Helvetica Neue', 'Calibri Light', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+// -----------
+//   Window
+// -----------
+.window {
+  width: 48rem;
+  height: 27rem;
+  background: $appBg;
+  position: relative;
+  overflow: hidden;
+  &__osx {
+    border-radius: 4px;
+    box-shadow: 0 0.8rem 3rem rgba(0, 0, 0, 0.5);
+  }
+}
+
+.window--header {
+  z-index: 1;
+  height: 3.1rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+.controls {
+  margin-left: 1rem;
+  margin-top: .8rem;
+  cursor: default;
+  .icon {
+    height: 80%;
+    position: absolute;
+    margin: auto;
+    opacity: 0;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+  }
+  &:hover {
+    .icon {
+      opacity: .5;
+    }
+  }
+  &--button {
+    border-radius: 50%;
+    width: .8rem;
+    height: .8rem;
+    margin-right: .2rem;
+    position: relative;
+    &__close {
+      background: rgb(252, 99, 93);
+    }
+    &__min {
+      background: rgb(253, 190, 65);
+    }
+    &__max {
+      background: rgb(53, 203, 75);
+    }
+  }
+}
+
+.window-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.intro-logo {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  margin: auto;
+  width: 4rem;
+  transform: translateY(-3.2rem) scale(1.4);
+  animation: intro--logo-translate .8s 2s both cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 9;
+  path {
+    fill: transparent;
+    stroke: #fff;
+    stroke-width: 1px;
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    animation:
+      intro--stroke-offset 1s both ease-in-out,
+      intro--stroke-fill .4s .8s both ease;
+  }
+}
+
+$logoEndY: -10.3rem;
+@keyframes intro--stroke-offset { to { stroke-dashoffset: 0 } }
+@keyframes intro--stroke-fill {
+  to {
+    fill: $siaGreen;
+    stroke: $siaGreen;
+  }
+}
+@keyframes intro--logo-translate { to { transform: translateY($logoEndY) scale(1) } }
+
+.sync-title {
+  color: rgba(255,255,255,.5);
+  margin: .2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  &:after {
+    animation: sync-finish .2s 5s both ease;
+    content: 'SYNCHRONIZING'
+  }
+}
+
+.sync-indicator {
+  margin-left: auto;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  display: flex;
+}
+
+.sync-progress {
+  height: 1.2rem;
+  transform: rotate(-90deg);
+  margin-left: .2rem;
+  animation: sync-shrink .4s 5.1s both cubic-bezier(0.77, 0, 0.175, 1);
+  circle {
+    stroke-width: 4px;
+    stroke: $siaGreen;
+    stroke-dasharray: 125;
+    stroke-dashoffset: 120;
+    animation: sync-progress 5s linear both;
+  }
+}
+
+@keyframes sync-progress { to { stroke-dashoffset: 0 } }
+@keyframes sync-finish { to { content: 'SYNCHRONIZED'; color: $siaGreen } }
+@keyframes sync-shrink { to { transform: scale(.5) } }
+
+// ------------------
+//   Welcome Screen
+// ------------------
+.welcome-screen {
+  margin: auto;
+  bottom: 2.4rem;
+  left: 0;
+  right: 0;
+  font-weight: 300;
+  width: 80%;
+  height: 18rem;
+  position: absolute;
+}
+
+$greetingStart: 2.4s;
+.greeting {
+  margin: auto;
+  text-align: center;
+  font-weight: 300;
+  color: #f0f0f0;
+  transform: translateY(1rem);
+  opacity: 0;
+  animation: greeting--animate-in .4s $greetingStart both ease;
+}
+
+.options {
+  display: flex;
+  margin-top: .8rem;
+}
+
+.mainTitle{
+  display: block;
+  position: absolute;
+  color: #f0f0f0;
+}
+.brandLogo{
+  display: block;
+  position: absolute;
+  left: 45%;
+  transform: translateY(1rem);
+  animation: greeting--animate-in .4s ($greetingStart + .2s) both ease;
+  width: 60px;
+
+}
+.option {
+  label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+  transform: translateY(1rem);
+  opacity: 0;
+  animation: greeting--animate-in .4s ($greetingStart + .2s) both ease;
+  list-style: none;
+  margin: .5rem;
+  background: rgba(0,0,0,.2);
+  flex: 1;
+  height: 12rem;
+  border-radius: 4px;
+  transition: border .1s ease;
+  border: 1px solid transparent;
+  &:nth-child(1) {
+    animation-delay: $greetingStart + .2s;
+  }
+  &:nth-child(2) {
+    animation-delay: $greetingStart + .3s;
+  }
+  &:nth-child(3) {
+    animation-delay: $greetingStart + .4s;
+  }
+  &--title {
+    color: #ccc;
+    font-weight: 400;
+    font-size: .9rem;
+    padding: 0 1rem;
+    text-align: center;
+    transition: color .1s ease;
+  }
+  &--icon {
+    width: 5rem;
+    margin: auto;
+    margin-top: .8rem;
+    svg {
+      transition: fill .1s ease;
+      fill: #ccc;
+    }
+  }
+  
+  &:hover {
+    border-color: rgba(255,255,255,.2);
+    .option--title{
+      color: #fff;
+    }
+    .option--icon svg {
+      fill: #fff;
+    }
+  }
+}
+
+@keyframes greeting--animate-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --------------
+//    Sections
+// --------------
+
+input[type="checkbox"]:checked + .section {
+  ~ .intro-logo {
+    animation: logo--to-topbar .4s forwards ease-in-out;
+  }
+  animation: section--animate-in .4s both ease-in-out;
+  pointer-events: all;
+}
+
+.section {
+  opacity: 0;
+  background: darken($appBg, 10);
+  position: absolute;
+  height: 100%;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  pointer-events: none;
+  color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  p {
+    width: 27rem;
+    margin: 1rem auto;
+    color: rgba(255,255,255,.5);
+  }
+}
+
+.section--title {
+  color: #fff;
+  font-weight: 300;
+  text-align: center;
+}
+
+@keyframes section--animate-in {
+  from {
+    transform: translateY(9rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes logo--to-topbar {
+  from { transform: translateY($logoEndY) scale(1) }
+  to { transform: translateY($logoEndY - 4.7rem) scale(.4) }
+}
+
+.form--input {
+  background: transparent;
+  color: #fff;
+  border: none;
+  border-bottom: 2px solid $siaGreen;
+  padding: .5rem 0;
+  width: 20rem;
+  flex: 2;
+  &:focus {
+    outline: none;
+    border-bottom-color: rgb(253, 190, 65);
+  }
+  &::placeholder {
+    color: rgba(255,255,255,.4);
+  }
+}
+
+.form--button {
+  margin: 2rem auto;
+  padding: .7rem 1rem;
+  color: #fff;
+  background: $siaGreen;
+  border-radius: 3px;
+}
+
+.form--group {
+  display: flex;
+  margin: 1rem auto;
+  width: 24rem;
+  strong {
+    flex: 0 0 5rem;
+    margin: auto;
+    margin-right: 2rem;
+    color: $siaGreen;
+  }
+  span {
+    flex: 2;
+  }
+}
