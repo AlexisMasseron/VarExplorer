@@ -26,7 +26,7 @@ class App extends React.Component {
 			name: '',  // Account name
 			address: '', // Account address
 			allowance: null,
-			vctBallance: null,
+			vctBalance: null,
 		};
 
 		this.deployFactory = this.deployFactory.bind(this);
@@ -94,10 +94,39 @@ class App extends React.Component {
 		VCToken.deployed().then(function (instance) {
 			return instance.balanceOf(proxyAddress).then(function (res) {
 				bound.setState({
-					vctBallance: (res / 10e17).toFixed(3).toString(10),   // return user's vct ballance
+					vctBalance: (res / 10e17).toFixed(3).toString(10),   // return user's vct ballance
 				});
 			});
 		});
+	}
+
+	getNetworkName = () => {
+		let bound = this;
+		window.web3.version.getNetwork(function (err, network) { 
+			if (!err) {
+				switch (network) {
+					case "1":
+						console.log('This is mainnet')
+						break
+					case "2":
+						console.log('This is the deprecated Morden test network.')
+						break
+					case "3":
+						console.log('This is the Ropsten test network.')
+						break
+					case "4":
+						console.log('This is the Rinkeby test network')
+					case "42":
+						console.log('This is the Kovan test network.')
+						break
+					default:
+						console.log('This is an unknown network.')
+
+				}
+			} else
+				console.log(err);
+		});
+
 	}
 
 	componentWillMount = () => {
@@ -109,6 +138,7 @@ class App extends React.Component {
 		this.setContract(UserProxy, this.state.provider);
 		this.setContract(VCToken, this.state.provider);
 		this.deployFactory();
+		this.getNetworkName();
 	}
 
 
@@ -123,9 +153,10 @@ class App extends React.Component {
 					</div> */}
 					<OwnershipModule/>
 					<TxForm/>
-					<ProxyInfo allowance={this.state.allowance} balance={this.state.vctBallance}/>
+					<ProxyInfo allowance={this.state.allowance} balance={this.state.vctBalance}/>
 						<div className="welcome-screen">
-						<h2 className="greeting">Welcome {this.state.name}! choose an option to get started.</h2>
+						<input className="hide" id="mainPage" />
+						<h2 className="greeting">Welcome {this.state.name}! to your Variabl account: {this.state.address}</h2>
 							<ul className="options">
 
 								<li className="option">

@@ -13,10 +13,10 @@ class ProxyInfo extends React.Component {
 
           <p>Quick reminder: The Ethers your are visualizing are linked to your variabl account and not to your metamask account.</p>
 
-          <div className="form--group">
+          <div className="form--group--2">
             <strong>ETH</strong><span>{this.props.allowance}</span>
           </div>
-          <div className="form--group">
+          <div className="form--group--2">
             <strong>VCT</strong><span>{this.props.balance}</span>
           </div>
 
@@ -26,7 +26,10 @@ class ProxyInfo extends React.Component {
     )
   }
 
-
+  static propTypes = {
+    allowance: React.PropTypes.string.isRequired,
+    balance: React.PropTypes.string.isRequired,
+  }; 
 }
 
 export default ProxyInfo;

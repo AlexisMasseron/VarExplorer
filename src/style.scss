@@ -172,7 +172,7 @@ $logoEndY: -10.3rem;
   font-weight: 300;
   width: 80%;
   height: 18rem;
-  position: absolute;
+  // position: absolute;
 }
 
 $greetingStart: 2.4s;
@@ -189,13 +189,14 @@ $greetingStart: 2.4s;
 .options {
   display: flex;
   margin-top: .8rem;
+  padding-bottom: 10px;
 }
 
-.mainTitle{
-  display: block;
-  position: absolute;
-  color: #f0f0f0;
-}
+// .mainTitle{
+//   display: block;
+//   position: absolute;
+//   color: #f0f0f0;
+// }
 .brandLogo{
   display: block;
   position: absolute;
@@ -349,10 +350,11 @@ input[type="checkbox"]:checked + .section {
   border-radius: 3px;
 }
 
+// FORM TX and ownershipModule
 .form--group {
   display: flex;
   margin: 1rem auto;
-  width: 24rem;
+  width: 32rem;
   strong {
     flex: 0 0 5rem;
     margin: auto;
@@ -361,5 +363,39 @@ input[type="checkbox"]:checked + .section {
   }
   span {
     flex: 2;
+  }
+}
+
+// FORM ProxyInfo
+.form--group--2{
+  display: flex;
+  margin: 1rem auto;
+  width: 20rem;
+  strong {
+    flex: 0 0 5rem;
+    margin: auto;
+    margin-right: 2rem;
+    color: $siaGreen;
+  }
+  span {
+    flex: 2;
+  }
+}
+
+
+#alert {
+  margin: 1rem auto;
+  font-size: 100%;
+  strong {
+    flex: 0 0 5rem;
+    margin: auto;
+    margin-right: 2rem;
+    color: $siaGreen;
+  }
+  span {
+    flex: 2;
+    padding: .5rem 0;
+    width: 20rem;
+    border-bottom: 2px solid $siaGreen;
   }
 }

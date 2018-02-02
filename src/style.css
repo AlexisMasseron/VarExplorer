@@ -146,8 +146,7 @@ ul, li {
   right: 0;
   font-weight: 300;
   width: 80%;
-  height: 18rem;
-  position: absolute; }
+  height: 18rem; }
 
 .greeting {
   margin: auto;
@@ -160,12 +159,8 @@ ul, li {
 
 .options {
   display: flex;
-  margin-top: .8rem; }
-
-.mainTitle {
-  display: block;
-  position: absolute;
-  color: #f0f0f0; }
+  margin-top: .8rem;
+  padding-bottom: 10px; }
 
 .brandLogo {
   display: block;
@@ -290,7 +285,7 @@ input[type="checkbox"]:checked + .section {
 .form--group {
   display: flex;
   margin: 1rem auto;
-  width: 24rem; }
+  width: 32rem; }
   .form--group strong {
     flex: 0 0 5rem;
     margin: auto;
@@ -298,5 +293,31 @@ input[type="checkbox"]:checked + .section {
     color: #00c99e; }
   .form--group span {
     flex: 2; }
+
+.form--group--2 {
+  display: flex;
+  margin: 1rem auto;
+  width: 20rem; }
+  .form--group--2 strong {
+    flex: 0 0 5rem;
+    margin: auto;
+    margin-right: 2rem;
+    color: #00c99e; }
+  .form--group--2 span {
+    flex: 2; }
+
+#alert {
+  margin: 1rem auto;
+  font-size: 100%; }
+  #alert strong {
+    flex: 0 0 5rem;
+    margin: auto;
+    margin-right: 2rem;
+    color: #00c99e; }
+  #alert span {
+    flex: 2;
+    padding: .5rem 0;
+    width: 20rem;
+    border-bottom: 2px solid #00c99e; }
 
 /*# sourceMappingURL=style.css.map */
