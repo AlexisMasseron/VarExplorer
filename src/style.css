@@ -132,10 +132,6 @@ ul, li {
 @keyframes sync-progress {
   to {
     stroke-dashoffset: 0; } }
-@keyframes sync-finish {
-  to {
-    content: 'SYNCHRONIZED';
-    color: #00c99e; } }
 @keyframes sync-shrink {
   to {
     transform: scale(0.5); } }
@@ -256,6 +252,13 @@ input[type="checkbox"]:checked + .section {
   to {
     transform: translateY(0);
     opacity: 1; } }
+@keyframes section--animate-out {
+  from {
+    transform: translateY(0);
+    opacity: 1; }
+  to {
+    transform: translateY(-9rem);
+    opacity: 0; } }
 @keyframes logo--to-topbar {
   from {
     transform: translateY(-10.3rem) scale(1); }

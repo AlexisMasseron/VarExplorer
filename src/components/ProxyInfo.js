@@ -7,7 +7,7 @@ class ProxyInfo extends React.Component {
   render () {
     return (
       <div>
-        <input className="hide" type="checkbox" id="newWallet"/>
+        <input className="hide" type="checkbox" id="proxyInfo"/>
         <section className="section">
           <h1 className="section--title">Account information</h1>
 
@@ -19,8 +19,9 @@ class ProxyInfo extends React.Component {
           <div className="form--group--2">
             <strong>VCT</strong><span>{this.props.balance}</span>
           </div>
-
-          <button className="form--button">Back</button>
+          {/* <li className="option">
+            <label htmlFor="mainPage">Back</label>
+          </li> */}
         </section>
       </div>
     )

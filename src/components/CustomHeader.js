@@ -2,6 +2,42 @@ import React from 'react';
 
 class CustomHeader extends React.Component { 
 
+  getNetworkName = () => {
+    setTimeout(function () {
+      window.web3.version.getNetwork(function (err, network) {
+        let styleElem = document.head.appendChild(document.createElement("style"));
+        if (!err) {
+          switch (network) {
+            case "1":
+              styleElem.innerHTML = ".sync-title:after {content: 'Mainnet'; color: rgb(0, 201, 158);}";
+              break
+            case "2":
+              styleElem.innerHTML = ".sync-title:after {content: 'Morden'; color: rgb(0, 201, 158);}";
+              break
+            case "3":
+              styleElem.innerHTML = ".sync-title:after {content: 'Ropsten'; color: rgb(0, 201, 158);}";
+              break
+            case "4":
+              styleElem.innerHTML = ".sync-title:after {content: 'Ribenky'; color: rgb(0, 201, 158);}";
+              break
+            case "42":
+              styleElem.innerHTML = ".sync-title:after {content: 'Kovan'; color: rgb(0, 201, 158);}";
+              break
+            default:
+              console.log('This is an unknown network.')
+          }
+        } else
+          console.log(err);
+      });
+      }, 5000);
+    }
+
+
+
+  componentDidMount = () => {
+    this.getNetworkName();
+  }
+
   render () {
     return (
       <header className="window--header">
@@ -24,7 +60,7 @@ class CustomHeader extends React.Component {
         </div>
 
         <div className="sync-indicator">
-          <h6 className="sync-title"></h6>
+          <h6 id="networkIndic" className="sync-title"></h6>
           <svg className="sync-progress" viewBox="0 0 48 48">
             <circle cx="24" cy="24" r="20" fill="none"></circle>
           </svg>
@@ -32,9 +68,6 @@ class CustomHeader extends React.Component {
       </header>
     )
   }
-  // static propTypes = {
-  //   provider: React.PropTypes.object.isRequired,
-  // };
 }
 
 export default CustomHeader;

@@ -1,23 +1,27 @@
 import React from 'react';
 
+let contract = require('truffle-contract');
+let factoryJson = require("../contracts/ProxiesFactory.json");
+let Factory = contract(factoryJson);
+
 class OwnershipModule extends React.Component  {
 
-  // handleOwnership = event => {
-  //   event.preventDefault();
-  //   let newAddress = this.newOwnerAddress.value;
-  //   let oldAddress = this.props.ownerAddress;
-  //   let bound = this;
-  //   Factory.at(oldAddress).then(function (instance) {
-  //     return instance.ChangedProxyOwner.call(bound.oldAddress, bound.newAddress ).then(function (addr) {
-  //       window.alert("Your address has been changed to: " + bound.newAddress);
-  //     });
-  //   });
-  // }
-  // TODO: set new adress as value 
+  handleOwnership = event => {
+    event.preventDefault();
+    let newAddress = this.newOwnerAddress.value;
+    let oldAddress = this.props.ownerAddress;
+    let bound = this;
+    Factory.at(oldAddress).then(function (instance) {
+      return instance.ChangedProxyOwner.call(bound.oldAddress, bound.newAddress ).then(function (addr) {
+        window.alert("Your address has been changed to: " + bound.newAddress);
+      });
+    });
+  }
+
   render() {
     return (
       <div>
-        <input className="hide" type="checkbox" id="recoverWallet"/>
+        <input className="hide" type="checkbox" id="ownershipModule"/>
         <section className="section">
           <h1 className="section--title">Change your account address</h1>
           <div className="form--group">
@@ -29,8 +33,8 @@ class OwnershipModule extends React.Component  {
     )
   }
 
-  // static propTypes = {
-	// 	ownerAddress: React.PropTypes.string.isRequired,
-	// };
+  static propTypes = {
+		ownerAddress: React.PropTypes.string.isRequired,
+	};
 }
 export default OwnershipModule;

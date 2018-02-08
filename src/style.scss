@@ -1,5 +1,6 @@
 $siaGreen: rgb(0, 201, 158);
 $appBg: #3D4C5F;
+$network: "SYNCHRONIZED";
 
 .hide {
   display: none;
@@ -158,7 +159,7 @@ $logoEndY: -10.3rem;
 }
 
 @keyframes sync-progress { to { stroke-dashoffset: 0 } }
-@keyframes sync-finish { to { content: 'SYNCHRONIZED'; color: $siaGreen } }
+// @keyframes sync-finish { to { content: $network; color: $siaGreen } }
 @keyframes sync-shrink { to { transform: scale(.5) } }
 
 // ------------------
@@ -283,6 +284,12 @@ input[type="checkbox"]:checked + .section {
   animation: section--animate-in .4s both ease-in-out;
   pointer-events: all;
 }
+// input[type="checkbox"]:checked + .section {
+//   animation: section--animate-out .4s both ease-in-out;
+//   pointer-events: all; 
+// }
+
+
 
 .section {
   opacity: 0;
@@ -319,6 +326,14 @@ input[type="checkbox"]:checked + .section {
     opacity: 1;
   }
 }
+
+@keyframes section--animate-out {
+  from {
+    transform: translateY(0);
+    opacity: 1; }
+  to {
+    transform: translateY(-9rem);
+    opacity: 0; } }
 
 @keyframes logo--to-topbar {
   from { transform: translateY($logoEndY) scale(1) }

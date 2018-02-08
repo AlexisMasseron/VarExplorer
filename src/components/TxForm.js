@@ -55,7 +55,7 @@ class TxForm extends React.Component {
 	render() {
 		return (
 			<div>
-				<input className="hide" type="checkbox" id="newHost" />
+				<input className="hide" type="checkbox" id="txForm" />
 				<section className="section">
 					<h1 className="section--title">Send Ether</h1>
 					<div className="form--group">
