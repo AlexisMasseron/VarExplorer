@@ -112,6 +112,34 @@ class App extends React.Component {
 		this.deployFactory();
 	}
 
+	toggleIn = (event) => {
+		// event.preventDefault();
+		let targetSection = document.getElementById(event.target.id) 
+		if (targetSection === document.getElementById("proxySection")) {
+			if (targetSection.style.display === "none") {
+			targetSection.style.display = "flex";
+			} else {
+				targetSection.style.display = "none";
+			}
+		} else if (targetSection=== "txForm") {
+			if (targetSection.style.display === "none") {
+				targetSection.style.display = "flex";
+			} else {
+				targetSection.style.display = "none";
+			}
+		} else {
+			if (targetSection.style.display === "none") {
+				targetSection.style.display = "flex";
+			} else {
+				targetSection.style.display = "none";
+			}
+		}
+		// if (targetSection.style.display === "none") {
+		// 	targetSection.style.display = "flex";
+		// } else {
+		// 	targetSection.style.display = "none";
+		// }
+	}
 
 
 	render() {
@@ -126,12 +154,12 @@ class App extends React.Component {
 					<TxForm/>
 					<ProxyInfo allowance={this.state.allowance} balance={this.state.vctBalance}/>
 						<div className="welcome-screen">
+						<section className="customTrigger">
+							<input className="hide" type="checkbox" id="mainPage" />
+						</section>
 						<h2 className="greeting">Welcome {this.state.name}! to your Variabl account: {this.state.address}</h2>
 							<ul className="options">
-							<div>
-								<input className="hide" type="checkbox" id="mainPage" />
-							</div>
-							{/* TODO: Faire slider les <li> vers le bas pour retourner vers la mainpage */}
+							{/* TODO: Passer arguments aux event handlers */}
 								<li className="option">
 								<label htmlFor="ownershipModule"></label>
 									<div className="option--icon">
@@ -141,8 +169,10 @@ class App extends React.Component {
 									</div>
 									<h4 className="option--title">Change your account address.</h4>
 								</li>
+
+
 								<li className="option">
-									<label htmlFor="proxyInfo"></label>
+								<label id="proxySection" onClick={ this.toggleIn}></label>
 									<div className="option--icon">
 										<svg viewBox="0 0 24 24">
 											<path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
@@ -150,6 +180,9 @@ class App extends React.Component {
 									</div>
 									<h4 className="option--title">Visualize your account balance.</h4>
 								</li>
+
+
+
 								<li className="option">
 									<label htmlFor="txForm"></label>
 									<div className="option--icon">

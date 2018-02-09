@@ -2,13 +2,21 @@ import React from 'react';
 
 class ProxyInfo extends React.Component {
   
-
+  toggleBack = event => {
+    event.preventDefault();
+    let activeSection = document.getElementById("proxySection");
+    if (activeSection.style.display === "none") {
+      activeSection.style.display = "block";
+    } else {
+      activeSection.style.display = "none";
+    }
+  }
 
   render () {
     return (
       <div>
         <input className="hide" type="checkbox" id="proxyInfo"/>
-        <section className="section">
+        <section className="section" id="proxySection">
           <h1 className="section--title">Account information</h1>
 
           <p>Quick reminder: The Ethers your are visualizing are linked to your variabl account and not to your metamask account.</p>
@@ -19,9 +27,7 @@ class ProxyInfo extends React.Component {
           <div className="form--group--2">
             <strong>VCT</strong><span>{this.props.balance}</span>
           </div>
-          {/* <li className="option">
-            <label htmlFor="mainPage">Back</label>
-          </li> */}
+          <button type="submit" className="form--button" onClick={(e) => this.toggleBack(e)} >Back</button>
         </section>
       </div>
     )

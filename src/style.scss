@@ -284,10 +284,6 @@ input[type="checkbox"]:checked + .section {
   animation: section--animate-in .4s both ease-in-out;
   pointer-events: all;
 }
-// input[type="checkbox"]:checked + .section {
-//   animation: section--animate-out .4s both ease-in-out;
-//   pointer-events: all; 
-// }
 
 
 
@@ -363,6 +359,7 @@ input[type="checkbox"]:checked + .section {
   color: #fff;
   background: $siaGreen;
   border-radius: 3px;
+
 }
 
 // FORM TX and ownershipModule
