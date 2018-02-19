@@ -18,16 +18,27 @@ class OwnershipModule extends React.Component  {
     });
   }
 
+  toggleBack = event => {
+    event.preventDefault();
+    let activeSection = document.getElementById("ownerSection");
+    activeSection.style.opacity = 0;
+    activeSection.style.transform = "translateY(0)";
+    activeSection.style.display = "none";
+  }
+
   render() {
     return (
       <div>
-        <input className="hide" type="checkbox" id="ownershipModule"/>
-        <section className="section">
+        <input className="hide" type="checkbox"/>
+        <section id="ownerSection" className="section">
           <h1 className="section--title">Change your account address</h1>
           <div className="form--group">
             <input className="form--input" type="text" placeholder="0x52706aa94C13AA7C4568E8E0d367a88AA2CAe103" />
           </div>
-          <button className="form--button">Change</button>
+          <ul className="finalForm">
+            <button className="form--button-tx">Change</button>
+            <button className="form--button-tx" onClick={this.toggleBack}>Back</button>
+          </ul>
         </section>
       </div>
     )

@@ -113,32 +113,24 @@ class App extends React.Component {
 	}
 
 	toggleIn = (event) => {
-		// event.preventDefault();
+		event.preventDefault();
 		let targetSection = document.getElementById(event.target.id) 
-		if (targetSection === document.getElementById("proxySection")) {
-			if (targetSection.style.display === "none") {
-			targetSection.style.display = "flex";
-			} else {
-				targetSection.style.display = "none";
-			}
-		} else if (targetSection=== "txForm") {
-			if (targetSection.style.display === "none") {
-				targetSection.style.display = "flex";
-			} else {
-				targetSection.style.display = "none";
-			}
+		if (targetSection === document.getElementById("proxyTrigger")) {
+			let newSection = document.getElementById("proxySection");
+			newSection.style.display="flex";
+			newSection.style.pointerEvents = "all";
+			newSection.style.animation = "section--animate-in .4s both ease-in-out";
+		} else if (targetSection === document.getElementById("txTrigger")) {
+			let newSection = document.getElementById("sendTxSection");
+			newSection.style.display = "flex";
+			newSection.style.pointerEvents = "all";
+			newSection.style.animation = "section--animate-in .4s both ease-in-out";
 		} else {
-			if (targetSection.style.display === "none") {
-				targetSection.style.display = "flex";
-			} else {
-				targetSection.style.display = "none";
-			}
+			let newSection = document.getElementById("ownerSection");
+			newSection.style.display = "flex";
+			newSection.style.pointerEvents = "all";
+			newSection.style.animation = "section--animate-in .4s both ease-in-out";
 		}
-		// if (targetSection.style.display === "none") {
-		// 	targetSection.style.display = "flex";
-		// } else {
-		// 	targetSection.style.display = "none";
-		// }
 	}
 
 
@@ -147,9 +139,6 @@ class App extends React.Component {
 			<div className="window window__osx">
 				<CustomHeader/>
 				<div className="window-content">
-					{/* <div className="form--group" >
-						<span>Variabl</span><img className="brandLogo" src="https://image.ibb.co/kVryjG/variabl_Home.png" alt="brandLogo" /><span>Explorer</span>
-					</div> */}
 					<OwnershipModule ownerAddress={this.state.address}/>
 					<TxForm/>
 					<ProxyInfo allowance={this.state.allowance} balance={this.state.vctBalance}/>
@@ -159,9 +148,8 @@ class App extends React.Component {
 						</section>
 						<h2 className="greeting">Welcome {this.state.name}! to your Variabl account: {this.state.address}</h2>
 							<ul className="options">
-							{/* TODO: Passer arguments aux event handlers */}
 								<li className="option">
-								<label htmlFor="ownershipModule"></label>
+								<label onClick={this.toggleIn}></label>
 									<div className="option--icon">
 										<svg viewBox="0 0 24 24">
 											<path d="M14 12c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zm-2-9c-4.97 0-9 4.03-9 9H0l4 4 4-4H5c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.51 0-2.91-.49-4.06-1.3l-1.42 1.44C8.04 20.3 9.94 21 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z" />
@@ -170,21 +158,18 @@ class App extends React.Component {
 									<h4 className="option--title">Change your account address.</h4>
 								</li>
 
-
 								<li className="option">
-								<label id="proxySection" onClick={ this.toggleIn}></label>
+								<label id="proxyTrigger" onClick={this.toggleIn}></label>
 									<div className="option--icon">
 										<svg viewBox="0 0 24 24">
 											<path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
 										</svg>
 									</div>
-									<h4 className="option--title">Visualize your account balance.</h4>
+									<h4 className="option--title">Check your account balance.</h4>
 								</li>
 
-
-
 								<li className="option">
-									<label htmlFor="txForm"></label>
+								<label id="txTrigger" onClick={this.toggleIn}></label>
 									<div className="option--icon">
 										<svg viewBox="0 0 24 24">
 											<path d="M19.35 10.04C18.67 6.6 15.65 4 12 4 9.1 4 6.6 5.64 5.35 8.04 2.35 8.36 0 10.9 0 14c0 3.3 2.7 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.2 0-4-1.8-4-4s1.8-4 4-4h.7c.68-2.3 2.8-4 5.3-4 3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3z" />

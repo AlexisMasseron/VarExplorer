@@ -21,6 +21,12 @@ ul, li {
   margin: 0;
   padding: 0; }
 
+.kitty {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block; }
+
 .window {
   width: 48rem;
   height: 27rem;
@@ -223,6 +229,23 @@ input[type="checkbox"]:checked + .section {
   input[type="checkbox"]:checked + .section ~ .intro-logo {
     animation: logo--to-topbar .4s forwards ease-in-out; }
 
+#proxySection {
+  opacity: 0;
+  background: #293340;
+  position: absolute;
+  height: 100%;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  pointer-events: none;
+  color: #f0f0f0;
+  display: flex;
+  flex-direction: column; }
+  #proxySection p {
+    width: 27rem;
+    margin: 1rem auto;
+    color: rgba(255, 255, 255, 0.5); }
+
 .section {
   opacity: 0;
   background: #293340;
@@ -283,7 +306,19 @@ input[type="checkbox"]:checked + .section {
   padding: .7rem 1rem;
   color: #fff;
   background: #00c99e;
-  border-radius: 3px; }
+  border-radius: 3px;
+  border: 1px; }
+
+.form--button-tx {
+  margin: 2rem 1rem auto;
+  padding: .7rem 1rem;
+  color: #fff;
+  background: #00c99e;
+  border-radius: 3px;
+  display: inline-block;
+  border: 1px;
+  font-size: 100%;
+  line-height: 1.15; }
 
 .form--group {
   display: flex;
@@ -297,17 +332,20 @@ input[type="checkbox"]:checked + .section {
   .form--group span {
     flex: 2; }
 
-.form--group--2 {
+.form--group--proxy {
   display: flex;
   margin: 1rem auto;
-  width: 20rem; }
-  .form--group--2 strong {
+  width: 15%; }
+  .form--group--proxy strong {
     flex: 0 0 5rem;
     margin: auto;
-    margin-right: 2rem;
     color: #00c99e; }
-  .form--group--2 span {
-    flex: 2; }
+  .form--group--proxy span {
+    flex: 2;
+    border-bottom: 2px solid #00c99e; }
+
+.finalForm {
+  text-align: center; }
 
 #alert {
   margin: 1rem auto;

@@ -2,6 +2,8 @@ import React from 'react';
 import { default as Web3} from 'web3';
 import { Alert } from 'react-bootstrap';
 
+import UnlockMeta from './UnlockMeta'
+
 class Connexion extends React.Component {
     constructor(props){
         super(props);
@@ -50,46 +52,17 @@ class Connexion extends React.Component {
         }.bind(this));
     }
     
-    // TODO: Create component to render the different types of alerts to avoid using multiple if/else
     render() {
         if(this.state.metaPopUpIsVisible){
             return (
                 <div>
-                    <div className="alertHeader">
-                        <nav>
-                            <Alert className="connexionAlert" bsStyle="danger" block>
-                                <h4>"Please unlock your metamask account!</h4>
-                            </Alert>
-                        </nav>
-                    </div>
-                    <div className="connexionBox">
-                        <div className="headerConnexion">
-                            <h1> Welcome to VarExplorer</h1>
-                            <h2> We have trouble loading your account! </h2>
-                        </div>
-                        <img className="kitty" alt="FancyKitty"
-                            src="https://storage.googleapis.com/ck-kitty-image/0x06012c8cf97bead5deae237070f9587f8e7a266d/459063.png" />
-                    </div>
+                    <UnlockMeta/>
                 </div>
             )
         } else if(this.state.localPopUpIsVisible){
             return (
                 <div>
-                    <div className="alertHeader">
-                        <nav>
-                            <Alert className="connexionAlert" bsStyle="danger" block>
-                                <h4>Impossible to connect to your local node</h4>
-                            </Alert>
-                        </nav>
-                    </div>
-                    <div className="connexionBox">
-                        <div className="headerConnexion">
-                            <h1> Welcome to VarExplorer</h1>
-                            <h2> We have trouble loading your account! </h2>
-                        </div>
-                        <img className="kitty" alt="FancyKitty"
-                            src="https://storage.googleapis.com/ck-kitty-image/0x06012c8cf97bead5deae237070f9587f8e7a266d/459063.png" />
-                    </div>
+                    <UnlockLocal/>
                 </div>
             )
         } else {
@@ -99,8 +72,6 @@ class Connexion extends React.Component {
                         <h1> Welcome to VarExplorer</h1>
                         <h2> We are loading your account, please wait. </h2>
                     </div>
-                    <img className="kitty" alt="FancyKitty"
-                        src="https://storage.googleapis.com/ck-kitty-image/0x06012c8cf97bead5deae237070f9587f8e7a266d/459063.png" />
                 </div>
             )
         }

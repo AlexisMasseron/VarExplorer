@@ -10,7 +10,7 @@ class TxForm extends React.Component {
 			txHash: ''
 		}
 
-		this.handleDismiss = this.handleDismiss.bind(this);
+		this.toggleBack = this.toggleBack.bind(this);
 		this.handleTx = this.handleTx.bind(null);
 	}
 
@@ -19,8 +19,12 @@ class TxForm extends React.Component {
 		return wei;
 	}
 
-	handleDismiss() {
-		this.setState({ show: false });
+	toggleBack = event => {
+		event.preventDefault();
+		let activeSection = document.getElementById("sendTxSection");
+		activeSection.style.opacity = 0;
+		activeSection.style.transform = "translateY(0)";
+		activeSection.style.display = "none";
 	}
 
 	handleTx = event => {
@@ -56,7 +60,7 @@ class TxForm extends React.Component {
 		return (
 			<div>
 				<input className="hide" type="checkbox" id="txForm" />
-				<section className="section">
+				<section id="sendTxSection" className="section">
 					<h1 className="section--title">Send Ether</h1>
 					<div className="form--group">
 						<strong>Address: </strong>
@@ -67,9 +71,11 @@ class TxForm extends React.Component {
 						<input className="form--input" type="number" placeholder="Amount" ref={(input) => { this.amountInput = input }}/>
 					</div>
 					<div id="alert" className="hide"><strong>Tx Hash: </strong><span>{this.state.txHash}</span></div>
-					<label htmlFor="mainPage"></label>
-					<button className="form--button" type="submit" onClick={(e) => this.handleTx(e)}>Send</button>
-				</section>
+					<ul className="finalForm">
+						<button className="form--button-tx" type="submit" onClick={(e) => this.handleTx(e)}>Send</button>
+						<button className="form--button-tx" type="submit" onClick={(e) => this.toggleBack(e)}>Back</button>
+					</ul>
+					</section>
 			</div>
 		);
 	}

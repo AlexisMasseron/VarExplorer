@@ -29,6 +29,13 @@ ul, li {
   padding: 0;
 }
 
+.kitty{
+  width: 50%;
+  margin-left: auto;
+	margin-right: auto;
+	display: inline-block;
+}
+
 // -----------
 //   Window
 // -----------
@@ -285,7 +292,24 @@ input[type="checkbox"]:checked + .section {
   pointer-events: all;
 }
 
-
+#proxySection{
+  opacity: 0;
+  background: darken($appBg, 10);
+  position: absolute;
+  height: 100%;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  pointer-events: none;
+  color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  p {
+    width: 27rem;
+    margin: 1rem auto;
+    color: rgba(255,255,255,.5);
+  }
+}
 
 .section {
   opacity: 0;
@@ -359,10 +383,22 @@ input[type="checkbox"]:checked + .section {
   color: #fff;
   background: $siaGreen;
   border-radius: 3px;
-
+  border: 1px;
 }
 
-// FORM TX and ownershipModule
+.form--button-tx {
+  margin: 2rem 1rem auto;
+  padding: .7rem 1rem;
+  color: #fff;
+  background: $siaGreen;
+  border-radius: 3px;
+  display: inline-block;
+  border: 1px;
+  font-size: 100%;
+  line-height: 1.15;
+}
+
+
 .form--group {
   display: flex;
   margin: 1rem auto;
@@ -378,22 +414,25 @@ input[type="checkbox"]:checked + .section {
   }
 }
 
-// FORM ProxyInfo
-.form--group--2{
+
+.form--group--proxy {
   display: flex;
   margin: 1rem auto;
-  width: 20rem;
+  width: 15%;
   strong {
     flex: 0 0 5rem;
     margin: auto;
-    margin-right: 2rem;
     color: $siaGreen;
   }
   span {
     flex: 2;
+    border-bottom: 2px solid #00c99e;
   }
 }
 
+.finalForm {
+  text-align: center;
+}
 
 #alert {
   margin: 1rem auto;
